@@ -10,7 +10,7 @@
 //The player that will move around on the screen
 class Player{
     public:
-		//The dimensions of the player (a rectangle)
+		//The dimensions of the player (a square)
 		static const int PLAYER_WIDTH = 13;
 		static const int PLAYER_HEIGHT = 13;
 
@@ -18,7 +18,7 @@ class Player{
 		static const int PLAYER_VEL = 6;
 
 		//Initializes the variables
-		Player();
+		Player(int posX, int posY);
 
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent( SDL_Event& e );

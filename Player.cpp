@@ -2,10 +2,10 @@
 #include "Constants.h"
 
 
-Player::Player(){
+Player::Player(int posX, int posY){
     //Initialize the offsets
-    mPosX = 50;
-    mPosY = 300;
+    mPosX = posX;
+    mPosY = posY;
 
     //Initialize the velocity
     mVelX = 0;

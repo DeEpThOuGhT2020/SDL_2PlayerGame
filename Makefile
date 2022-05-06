@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = Main.cpp WTexture.cpp Player.cpp Player2.cpp Guard.cpp
+OBJS = Main.cpp WTexture.cpp Player.cpp Guard.cpp
 
 #CC specifies which compiler we're using
 CC = g++

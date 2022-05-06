@@ -1,16 +1,13 @@
-#include "Constants.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <stdio.h>
 #include <string>
-#include "WTexture.h"
 #include "Player.h"
-#include "Player2.h"
 #pragma once
 
 class Guard{
     public:
-        //The dimensions of the guard (a rectangle)
+        //The dimensions of the guard (a square)
         static const int GUARD_WIDTH = 19;  
         static const int GUARD_HEIGHT = 19;
 
@@ -18,16 +15,15 @@ class Guard{
         static const int GUARD_VEL = 2;
 
         //Initializes the variables
-        Guard(int map[60][100]);
+        Guard(int posX, int posY);
 
-        void update(Player p1 , Player2 p2, int map[60][100]);
+        void moveGuard(Player p1 , Player p2, int map[60][100]);
         void renderGuard(SDL_Renderer* renderer, WTexture &guardTexture);
 
          //The X and Y offsets of the guard
         int mPosX, mPosY;
 
-    private:
-       
+    private:  
 
         //The velocity of the guard
         int mVelX, mVelY;
