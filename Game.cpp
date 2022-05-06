@@ -89,7 +89,7 @@ bool loadMedia(){
 		printf("Failed to load guard texture image!\n");
 		success = false;
 	}
-	if( !gBuildingTexture.loadFromFile(gRenderer, "Resources/point.bmp" ) ){
+	if( !gBuildingTexture.loadFromFile(gRenderer, "Resources/build.png" ) ){
 		printf( "Failed to load tile texture image!\n" );
 		success = false;
 	}
