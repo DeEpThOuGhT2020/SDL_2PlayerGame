@@ -9,10 +9,8 @@ Guard::Guard(int posX, int posY){
     mVelX = 0;
     mVelY = 0;
 }
- // change guard function properly 
- // hahahah
- 
-void Guard::moveGuard(Player p1 ,Player p2, int map[60][100]){    
+
+void Guard::moveGuard(Player p1 ,Player p2, int map[70][100]){    
     if(mPosX < p1.mPosX && mPosX < p2.mPosX){
         mVelX = GUARD_VEL;
     }
@@ -68,19 +66,19 @@ void Guard::moveGuard(Player p1 ,Player p2, int map[60][100]){
         mPosY -= mVelY;
     }
 
-    if (map[mPosY/TILE_SIZE][mPosX/TILE_SIZE] != 1){
+    if (map[mPosY/TILE_SIZE][mPosX/TILE_SIZE] == 0){
         mPosX -= mVelX;
         mPosY -= mVelY;
     }
-    if (map[(mPosY+GUARD_HEIGHT)/TILE_SIZE][(mPosX+GUARD_WIDTH)/TILE_SIZE]!= 1){
+    if (map[(mPosY+GUARD_HEIGHT)/TILE_SIZE][(mPosX+GUARD_WIDTH)/TILE_SIZE] == 0){
         mPosX -= mVelX;
         mPosY -= mVelY;
     }
-    if (map[(mPosY+GUARD_HEIGHT)/TILE_SIZE][mPosX/TILE_SIZE]!= 1){
+    if (map[(mPosY+GUARD_HEIGHT)/TILE_SIZE][mPosX/TILE_SIZE] == 0){
         mPosX -= mVelX;
         mPosY -= mVelY;
     }
-    if (map[mPosY/TILE_SIZE][(mPosX+GUARD_WIDTH)/TILE_SIZE] != 1){
+    if (map[mPosY/TILE_SIZE][(mPosX+GUARD_WIDTH)/TILE_SIZE] == 0){
         mPosX -= mVelX;
         mPosY -= mVelY;
     }

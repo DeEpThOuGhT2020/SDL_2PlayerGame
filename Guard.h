@@ -12,12 +12,12 @@ class Guard{
         static const int GUARD_HEIGHT = 19;
 
         //Maximum axis velocity of the guard
-        static const int GUARD_VEL = 5;
+        static const int GUARD_VEL = 2;
 
         //Initializes the variables
         Guard(int posX, int posY);
 
-        void moveGuard(Player p1 , Player p2, int map[60][100]);
+        void moveGuard(Player p1 , Player p2, int map[70][100]);
         void renderGuard(SDL_Renderer* renderer, WTexture &guardTexture);
 
          //The X and Y offsets of the guard
@@ -31,5 +31,3 @@ class Guard{
         //The guard's direction
         int mDirection;
 };
-
-        
