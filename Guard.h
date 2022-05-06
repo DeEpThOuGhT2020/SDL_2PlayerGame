@@ -17,7 +17,7 @@ class Guard{
         //Initializes the variables
         Guard(int posX, int posY);
 
-        void moveGuard(Player p1 , Player p2, int map[60][100]);
+        void moveGuard(Player p1 , Player p2, int map[70][100]);
         void renderGuard(SDL_Renderer* renderer, WTexture &guardTexture);
 
          //The X and Y offsets of the guard

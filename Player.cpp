@@ -40,7 +40,7 @@ void Player::handleEvent( SDL_Event& e ){
     }
 }
 
-void Player::movePlayer(int map[60][100]){
+void Player::movePlayer(int map[70][100]){
     //Move the player left or right
     mPosX += mVelX;
     //If the player went too far to the left or right

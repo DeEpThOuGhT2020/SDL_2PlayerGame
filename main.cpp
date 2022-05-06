@@ -201,7 +201,7 @@ int main( int argc, char* args[] ){
 
 				//Render objects
 				
-				for (int i = 0 ; i < 60 ; i++){
+				for (int i = 0 ; i < 70 ; i++){
 					for (int j = 0 ; j < 100 ; j ++){
 						if (map[i][j] == 0){
 							gBackgroundTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i);

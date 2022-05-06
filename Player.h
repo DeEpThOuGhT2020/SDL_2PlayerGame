@@ -24,7 +24,7 @@ class Player{
 		void handleEvent( SDL_Event& e );
 
 		//Moves the player
-		void movePlayer(int map[60][100]);
+		void movePlayer(int map[70][100]);
 
 		//Shows the player on the screen
 		void renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture);

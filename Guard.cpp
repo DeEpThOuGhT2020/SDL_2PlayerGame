@@ -12,7 +12,7 @@ Guard::Guard(int posX, int posY){
  // change guard function properly 
  // hahahah
  
-void Guard::moveGuard(Player p1 ,Player p2, int map[60][100]){    
+void Guard::moveGuard(Player p1 ,Player p2, int map[70][100]){    
     if(mPosX < p1.mPosX && mPosX < p2.mPosX){
         mVelX = GUARD_VEL;
     }
