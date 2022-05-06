@@ -6,9 +6,8 @@
 #include "WTexture.h"
 #pragma once
 
-
 //The player that will move around on the screen
-class Player{
+class Player2{
     public:
 		//The dimensions of the player (a rectangle)
 		static const int PLAYER_WIDTH = 13;
@@ -18,7 +17,7 @@ class Player{
 		static const int PLAYER_VEL = 6;
 
 		//Initializes the variables
-		Player();
+		Player2();
 
 		//Takes key presses and adjusts the player's velocity
 		void handleEvent( SDL_Event& e );
@@ -32,9 +31,9 @@ class Player{
 		//The X and Y offsets of the player
 		int mPosX, mPosY;
 
-
     private:
 		
+
 		//The velocity of the player
 		int mVelX, mVelY;
 

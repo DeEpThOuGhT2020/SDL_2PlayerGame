@@ -1,41 +1,41 @@
-#include "Player.h"
+#include "Player2.h"
 #include "Constants.h"
 
 
-Player::Player(){
+Player2::Player2(){
     //Initialize the offsets
     mPosX = 50;
-    mPosY = 300;
+    mPosY = 350;
 
     //Initialize the velocity
     mVelX = 0;
     mVelY = 0;
 }
 
-void Player::handleEvent( SDL_Event& e ){
+void Player2::handleEvent( SDL_Event& e ){
     //If a key was pressed
 	if( e.type == SDL_KEYDOWN && e.key.repeat == 0 ){
         //Adjust the velocity
         switch( e.key.keysym.sym ){
-            case SDLK_UP: mVelY -= PLAYER_VEL; break;
-            case SDLK_DOWN: mVelY += PLAYER_VEL; break;
-            case SDLK_LEFT: mVelX -= PLAYER_VEL; break;
-            case SDLK_RIGHT: mVelX += PLAYER_VEL; break;
+            case SDLK_w: mVelY -= PLAYER_VEL; break;
+            case SDLK_s: mVelY += PLAYER_VEL; break;
+            case SDLK_a: mVelX -= PLAYER_VEL; break;
+            case SDLK_d: mVelX += PLAYER_VEL; break;
         }
     }
     //If a key was released
     else if( e.type == SDL_KEYUP && e.key.repeat == 0 ){
         //Adjust the velocity
         switch( e.key.keysym.sym ){
-            case SDLK_UP: mVelY += PLAYER_VEL; break;
-            case SDLK_DOWN: mVelY -= PLAYER_VEL; break;
-            case SDLK_LEFT: mVelX += PLAYER_VEL; break;
-            case SDLK_RIGHT: mVelX -= PLAYER_VEL; break;
+            case SDLK_w: mVelY += PLAYER_VEL; break;
+            case SDLK_s: mVelY -= PLAYER_VEL; break;
+            case SDLK_a: mVelX += PLAYER_VEL; break;
+            case SDLK_d: mVelX -= PLAYER_VEL; break;
         }
     }
 }
 
-void Player::movePlayer(int map[60][100]){
+void Player2::movePlayer(int map[60][100]){
     //Move the player left or right
     mPosX += mVelX;
     //If the player went too far to the left or right
@@ -77,7 +77,7 @@ void Player::movePlayer(int map[60][100]){
 	}
 }
 
-void Player::renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture){
+void Player2::renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture){
     //Show the player
 	playerTexture.render( renderer, mPosX, mPosY );
 }
