@@ -12,7 +12,7 @@ class Guard{
         static const int GUARD_HEIGHT = 19;
 
         //Maximum axis velocity of the guard
-        static const int GUARD_VEL = 2;
+        static const int GUARD_VEL = 5;
 
         //Initializes the variables
         Guard(int posX, int posY);

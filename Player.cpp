@@ -10,6 +10,11 @@ Player::Player(int posX, int posY){
     //Initialize the velocity
     mVelX = 0;
     mVelY = 0;
+
+    //Initialize the score and mental health
+
+    mScore = 0;
+    mMentalHealth = 100;
 }
 
 void Player::handleEvent( SDL_Event& e ){
@@ -52,25 +57,25 @@ void Player::movePlayer(int map[60][100]){
         mPosY -= mVelY;
     }
 
-    if (map[mPosY/TILE_SIZE][mPosX/TILE_SIZE] == 0){
+    if (map[mPosY/TILE_SIZE][mPosX/TILE_SIZE] != 1){
 		mPosX -= mVelX;
 		mPosY -= mVelY;
 
 	}
 
-	if (map[(mPosY+PLAYER_HEIGHT)/TILE_SIZE][(mPosX+PLAYER_WIDTH)/TILE_SIZE] == 0){
+	if (map[(mPosY+PLAYER_HEIGHT)/TILE_SIZE][(mPosX+PLAYER_WIDTH)/TILE_SIZE] != 1){
 		mPosX -= mVelX;
 		mPosY -= mVelY;
 
 	}
 
-    if (map[(mPosY+PLAYER_HEIGHT)/TILE_SIZE][mPosX/TILE_SIZE] == 0){
+    if (map[(mPosY+PLAYER_HEIGHT)/TILE_SIZE][mPosX/TILE_SIZE]!= 1){
 		mPosX -= mVelX;
 		mPosY -= mVelY;
 
 	}
     
-    if (map[mPosY/TILE_SIZE][(mPosX+PLAYER_WIDTH)/TILE_SIZE] == 0){
+    if (map[mPosY/TILE_SIZE][(mPosX+PLAYER_WIDTH)/TILE_SIZE] != 1){
 		mPosX -= mVelX;
 		mPosY -= mVelY;
 
