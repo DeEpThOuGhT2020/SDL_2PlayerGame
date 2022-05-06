@@ -32,10 +32,6 @@ class Player{
 		//The X and Y offsets of the player
 		int mPosX, mPosY;
 
-		//Score and Mental Health
-		int mScore;
-		int mMentalHealth;
-
 
     private:
 		
