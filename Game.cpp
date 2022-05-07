@@ -6,6 +6,8 @@ SDL_Window* gWindow = NULL;
 //The window renderer
 SDL_Renderer* gRenderer = NULL;
 
+TTF_Font* gFont = NULL;
+
 //Scene textures
 WTexture gPlayer1Texture;
 WTexture gPlayer2Texture;
@@ -35,7 +37,7 @@ bool init(){
 		}
 
 		//Create window
-		gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+		gWindow = SDL_CreateWindow( "2PlayerMazeGame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
 		if( gWindow == NULL ){
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
 			success = false;
@@ -53,10 +55,22 @@ bool init(){
 
 				//Initialize PNG loading
 				int imgFlags = IMG_INIT_PNG;
-				if( !( IMG_Init( imgFlags ) & imgFlags ) )
-				{
+				if( !( IMG_Init( imgFlags ) & imgFlags ) ){
 					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 					success = false;
+				}
+
+				//Initialize SDL_ttf
+                if( TTF_Init() == -1 ){
+                    printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
+                    success = false;
+                }
+				else{
+					gFont = TTF_OpenFont("font.ttf", 24);
+					if (gFont == NULL) {
+						fprintf(stderr, "error: font not found\n");
+						exit(EXIT_FAILURE);
+					}
 				}
 			}
 		}
@@ -69,11 +83,11 @@ bool loadMedia(){
 	//Loading success flag
 	bool success = true;
 
-	if( !gPlayer1Texture.loadFromFile(gRenderer, "Resources/NEWDOT.BMP" ) ){
+	if( !gPlayer1Texture.loadFromFile(gRenderer, "Resources/minion2.png" ) ){
 		printf( "Failed to load dot texture!\n" );
 		success = false;
 	}
-	if( !gPlayer2Texture.loadFromFile(gRenderer, "Resources/NEWDOT.BMP" ) ){
+	if( !gPlayer2Texture.loadFromFile(gRenderer, "Resources/minion.png" ) ){
 		printf( "Failed to load dot texture!\n" );
 		success = false;
 	}
@@ -85,8 +99,8 @@ bool loadMedia(){
 		printf( "Failed to load tile texture image!\n" );
 		success = false;
 	}
-	if(!gProfTexture.loadFromFile(gRenderer, "Resources/pi.png")){
-		printf("Failed to load Prof texture image!\n");
+	if(!gProfTexture.loadFromFile(gRenderer, "Resources/professor.png")){
+		printf("Failed to load guard texture image!\n");
 		success = false;
 	}
 	if( !gBuildingTexture.loadFromFile(gRenderer, "Resources/build.png" ) ){

@@ -50,13 +50,13 @@ int main( int argc, char* args[] ){
 			//Event handler
 			SDL_Event e;
 
-			//The dot that will be moving around on the screen
+			//The players and profs that will be moving around on the screen
 			Player player1(72, 300);
 			Player player2(1032, 350);
-			Prof Prof1(72, 325);
-			//Prof Prof2(60, 300);
-			//Prof Prof3(60, 400);
-			//Prof Prof4(648, 744);
+			Prof Prof1(72, 380);
+			Prof Prof2(1152, 434);
+			Prof Prof3(660, 648);
+			//Prof Prof4(660, 156);
 			//Prof Prof5(348, 72);
 
 			//While application is running
@@ -71,12 +71,12 @@ int main( int argc, char* args[] ){
 					//Handle input for the dot
 					player1.handleEvent( e );
 				}
-			
-				//Move the dot
+
+				//Move the players and profs
 				player1.movePlayer(map);
 				Prof1.moveProf(player1 , player2, map);
-				//Prof2.moveProf(player1 , player2, map);
-				//Prof3.moveProf(player1 , player2, map);
+				Prof2.moveProf(player1 , player2, map);
+				Prof3.moveProf(player1 , player2, map);
 				//Prof4.update(player1 , player2, map);
 				//Prof5.update(player1 , player2, map);
 
@@ -99,20 +99,31 @@ int main( int argc, char* args[] ){
 				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 				SDL_RenderClear( gRenderer );
 
+				Prof1.collided(player1);
+				Prof1.collided(player2);
+				Prof2.collided(player1);
+				Prof2.collided(player2);
+				Prof3.collided(player1);
+				Prof3.collided(player2);
+				//Prof4.collided(player1);
+				//Prof4.collided(player2);
+				//Prof5.collided(player1);
+				//Prof5.collided(player2);
+
 			//Render objects	
 				for (int i = 0 ; i < 70 ; i++){
 					for (int j = 0 ; j < 100 ; j ++){
 						if (map[i][j] == 0){
-							gBackgroundTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i);
+							gBackgroundTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i, TILE_SIZE, TILE_SIZE);
 						}
                         else if(map[i][j] == 1){
-							gRoadTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i);
+							gRoadTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i, TILE_SIZE, TILE_SIZE);
 						}
 						else if(map[i][j] == 2){
-							gGrassTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i);
+							gGrassTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i, TILE_SIZE, TILE_SIZE);
 						}
 						else if(map[i][j] == 3){
-							gBuildingTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i);
+							gBuildingTexture.render(gRenderer, TILE_SIZE*j,TILE_SIZE*i, TILE_SIZE, TILE_SIZE);
 						}
 					}
 				}
@@ -124,6 +135,9 @@ int main( int argc, char* args[] ){
 				//Prof3.renderProf(gRenderer, gProfTexture);
 				//Prof4.renderProf(gRenderer, gProfTexture);
 				//Prof5.renderProf(gRenderer, gProfTexture);
+				
+				//WTexture::renderText(gRenderer, gFont, (char *)"Hello", 600, 0, TEXT_WIDTH, TEXT_HEIGHT);
+
 
 			//Update screen
 				SDL_RenderPresent( gRenderer );

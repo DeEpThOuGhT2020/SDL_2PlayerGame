@@ -1,9 +1,7 @@
 #include "Prof.h"
 #include "Constants.h"
 
-
 Prof::Prof(int posX, int posY){
-
     mPosX=posX;
     mPosY=posY;
     iPosX = posX;
@@ -15,8 +13,8 @@ Prof::Prof(int posX, int posY){
 float dist(int x1, int y1, int x2, int y2){
     return sqrt(pow(x1-x2,2)+pow(y1-y2,2));
 }
+
 void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){    
-   
     if (dist(mPosX,mPosY,p1.mPosX,p1.mPosY) < dist(mPosX,mPosY,p2.mPosX,p2.mPosY)){
         if(mPosX < p1.mPosX){
             mVelX = PROF_VEL;
@@ -30,7 +28,8 @@ void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
         else if(mPosY > p1.mPosY){
             mVelY = -1*PROF_VEL;
         }
-    }else{
+    }
+    else{
         if(mPosX < p2.mPosX){
             mVelX = PROF_VEL;
         }
@@ -44,6 +43,7 @@ void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
             mVelY = -1*PROF_VEL;
         }
     }
+    
     //Move the Prof left or right
      mPosX += mVelX;
     //If the Prof went too far to the left or right
@@ -60,24 +60,24 @@ void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
         mPosY -= mVelY;
     }
     
-    if(mPosX > iPosX + 300 || mPosX < iPosX - 300){
+    if(mPosX > iPosX + PROF_RADIUS || mPosX < iPosX - PROF_RADIUS){
         mPosX -= mVelX;
     }
-    if(mPosY > iPosY + 300 || mPosY < iPosY - 300){
+    if(mPosY > iPosY + PROF_RADIUS || mPosY < iPosY - PROF_RADIUS){
         mPosY -= mVelY;
     }
    
 }    
 
 void Prof::renderProf(SDL_Renderer* renderer, WTexture &ProfTexture){
-    ProfTexture.render(renderer, mPosX, mPosY);
+    ProfTexture.render(renderer, mPosX, mPosY, PROF_WIDTH, PROF_HEIGHT);
 }
 
 bool Prof::collided(Player p){
     if(mPosX == p.mPosX && mPosY == p.mPosY){
         p.transport();
         return true;
-    }else{
-        return false;
     }
+    else
+        return false;
 }

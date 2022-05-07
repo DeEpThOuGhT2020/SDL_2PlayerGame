@@ -1,10 +1,9 @@
+//Using SDL, SDL_image, standard IO, and strings
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <stdio.h>
 #include <string>
 #include "WTexture.h"
-#include <iostream>
-
 #pragma once
 
 
@@ -12,8 +11,8 @@
 class Player{
     public:
 		//The dimensions of the player (a square)
-		static const int PLAYER_WIDTH = 13;
-		static const int PLAYER_HEIGHT = 13;
+		static const int PLAYER_WIDTH = 12;
+		static const int PLAYER_HEIGHT = 12;
 
 		//Maximum axis velocity of the player
 		static const int PLAYER_VEL = 6;
@@ -33,7 +32,9 @@ class Player{
 		void transport();
 
 		bool reachedDestination(int x , int y);
+
 		bool isDead();
+		
 		//The X and Y offsets of the player
 		int mPosX, mPosY;
 

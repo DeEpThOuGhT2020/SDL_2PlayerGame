@@ -1,6 +1,7 @@
 //Using SDL, SDL_image, standard IO, and strings
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "SDL2/SDL_ttf.h"
 #include "stdio.h"
 #include "string"
 #pragma once
@@ -17,10 +18,10 @@ class WTexture{
 		//Loads image at specified path
 		bool loadFromFile( SDL_Renderer* renderer, std::string path );
 		
-		#if defined(SDL_TTF_MAJOR_VERSION)
+		/*#if defined(SDL_TTF_MAJOR_VERSION)
 		//Creates image from font string
 		bool loadFromRenderedText( SDL_Renderer* renderer, std::string textureText, SDL_Color textColor );
-		#endif
+		#endif*/
 
 		//Deallocates texture
 		void free();
@@ -35,7 +36,8 @@ class WTexture{
 		void setAlpha( Uint8 alpha );
 		
 		//Renders texture at given point
-		void render( SDL_Renderer* renderer, int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
+		void render( SDL_Renderer* renderer, int x, int y, int l, int b);
+		static void renderText( SDL_Renderer* renderer, TTF_Font* font, char *text, int x, int y, int l, int b );
 
 		//Gets image dimensions
 		int getWidth();

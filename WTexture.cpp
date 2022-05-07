@@ -26,7 +26,7 @@ bool WTexture::loadFromFile( SDL_Renderer* renderer, std::string path ){
 	}
 	else{
 		//Color key image
-		SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0xFF, 0xFF, 0xFF ) );
+		//SDL_SetColorKey( loadedSurface, SDL_TRUE, SDL_MapRGB( loadedSurface->format, 0, 0xFF, 0xFF ) );
 
 		//Create texture from surface pixels
         newTexture = SDL_CreateTextureFromSurface( renderer, loadedSurface );
@@ -58,18 +58,32 @@ void WTexture::free(){
 	}
 }
 
-void WTexture::render( SDL_Renderer* renderer, int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip ){
+void WTexture::render( SDL_Renderer* renderer, int x, int y, int l, int b ){
 	//Set rendering space and render to screen
-	SDL_Rect renderQuad = { x, y, mWidth, mHeight };
+	SDL_Rect renderQuad = { x, y, l, b };
 
-	//Set clip rendering dimensions
-	if( clip != NULL ){
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
-	}
-
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
 	//Render to screen
-	SDL_RenderCopyEx( renderer, mTexture, clip, &renderQuad, angle, center, flip );
+	SDL_RenderCopy( renderer, mTexture, nullptr, &renderQuad );
+}
+
+void WTexture::renderText(SDL_Renderer* renderer, TTF_Font* font, char *text, int x, int y, int l, int b){
+
+	// Color of the text in rgb format,
+	SDL_Color White = {255, 255, 255, 0};
+
+	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font, text, White); 
+
+	SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+	SDL_Rect Message_rect; //create a rect
+	Message_rect.x = x;  //controls the rect's x coordinate 
+	Message_rect.y = y; // controls the rect's y coordinte
+	Message_rect.w = l; // controls the width of the rect
+	Message_rect.h = b; // controls the height of the rect
+
+	SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+	SDL_FreeSurface(surfaceMessage);
 }
 
 int WTexture::getWidth(){
@@ -95,7 +109,7 @@ void WTexture::setAlpha( Uint8 alpha ){
 	SDL_SetTextureAlphaMod( mTexture, alpha );
 }
 
-#if defined(SDL_TTF_MAJOR_VERSION)
+/*#if defined(SDL_TTF_MAJOR_VERSION)
 bool WTexture::loadFromRenderedText( SDL_Renderer* renderer, std::string textureText, SDL_Color textColor) {
 	//Get rid of preexisting texture
 	free();
@@ -125,4 +139,4 @@ bool WTexture::loadFromRenderedText( SDL_Renderer* renderer, std::string texture
 	//Return success
 	return mTexture != NULL;
 }
-#endif
+#endif*/

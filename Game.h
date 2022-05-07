@@ -14,6 +14,8 @@ extern SDL_Window* gWindow;
 //The window renderer
 extern SDL_Renderer* gRenderer;
 
+extern TTF_Font* gFont;
+
 //Scene textures
 extern WTexture gPlayer1Texture;
 extern WTexture gPlayer2Texture;

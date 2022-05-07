@@ -8,8 +8,8 @@
 class Prof{
     public:
         //The dimensions of the Prof (a square)
-        static const int PROF_WIDTH = 19;  
-        static const int PROF_HEIGHT = 19;
+        static const int PROF_WIDTH = 18;  
+        static const int PROF_HEIGHT = 18;
 
         //Maximum axis velocity of the Prof
         static const int PROF_VEL = 2;
@@ -21,7 +21,6 @@ class Prof{
         void renderProf(SDL_Renderer* renderer, WTexture &ProfTexture);
         bool collided(Player p);
 
-         
 
     private:  
 
@@ -29,6 +28,7 @@ class Prof{
         int mPosX, mPosY;
 
         int iPosX , iPosY;
+        
         //The velocity of the Prof
         int mVelX, mVelY;
 
