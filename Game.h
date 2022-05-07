@@ -19,7 +19,7 @@ extern WTexture gPlayer1Texture;
 extern WTexture gPlayer2Texture;
 extern WTexture gBackgroundTexture;
 extern WTexture gRoadTexture;
-extern WTexture gGuardTexture;
+extern WTexture gProfTexture;
 extern WTexture gBuildingTexture;
 extern WTexture gGrassTexture;
 

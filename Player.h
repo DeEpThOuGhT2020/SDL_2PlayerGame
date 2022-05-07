@@ -1,9 +1,10 @@
-//Using SDL, SDL_image, standard IO, and strings
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <stdio.h>
 #include <string>
 #include "WTexture.h"
+#include <iostream>
+
 #pragma once
 
 
@@ -29,6 +30,10 @@ class Player{
 		//Shows the player on the screen
 		void renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture);
 
+		void transport();
+
+		bool reachedDestination(int x , int y);
+		bool isDead();
 		//The X and Y offsets of the player
 		int mPosX, mPosY;
 

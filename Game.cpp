@@ -11,7 +11,7 @@ WTexture gPlayer1Texture;
 WTexture gPlayer2Texture;
 WTexture gBackgroundTexture;
 WTexture gRoadTexture;
-WTexture gGuardTexture;
+WTexture gProfTexture;
 WTexture gBuildingTexture;
 WTexture gGrassTexture;
 
@@ -77,7 +77,7 @@ bool loadMedia(){
 		printf( "Failed to load dot texture!\n" );
 		success = false;
 	}
-	if( !gBackgroundTexture.loadFromFile(gRenderer, "Resources/smallgrass.png" ) ){
+	if( !gBackgroundTexture.loadFromFile(gRenderer, "Resources/backg.png" ) ){
 		printf( "Failed to load background texture image!\n" );
 		success = false;
 	}
@@ -85,8 +85,8 @@ bool loadMedia(){
 		printf( "Failed to load tile texture image!\n" );
 		success = false;
 	}
-	if(!gGuardTexture.loadFromFile(gRenderer, "Resources/pi.png")){
-		printf("Failed to load guard texture image!\n");
+	if(!gProfTexture.loadFromFile(gRenderer, "Resources/pi.png")){
+		printf("Failed to load Prof texture image!\n");
 		success = false;
 	}
 	if( !gBuildingTexture.loadFromFile(gRenderer, "Resources/build.png" ) ){
@@ -106,7 +106,7 @@ void close(){
 	gPlayer2Texture.free();
 	gBackgroundTexture.free();
 	gRoadTexture.free();
-	gGuardTexture.free();
+	gProfTexture.free();
 	gBuildingTexture.free();
 	gGrassTexture.free();
 

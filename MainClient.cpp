@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Player.h"
 #include "Constants.h"
-#include "Guard.h"
+#include "Prof.h"
 
 // For multiplayer we need tcp/ip support
 #include <sys/types.h> //contains a number of basic derived types that should be used whenever appropriate
@@ -59,11 +59,11 @@ int main( int argc, char* args[] ){
 			//The dot that will be moving around on the screen
 			Player player1(72, 300);
 			Player player2(1032, 350);
-			Guard guard1(72, 325);
-			//Guard guard2(60, 300);
-			//Guard guard3(60, 400);
-			//Guard guard4(648, 744);
-			//Guard guard5(348, 72);
+			Prof Prof1(72, 325);
+			//Prof Prof2(60, 300);
+			//Prof Prof3(60, 400);
+			//Prof Prof4(648, 744);
+			//Prof Prof5(348, 72);
 
 			//While application is running
 			while( !quit ){
@@ -80,11 +80,12 @@ int main( int argc, char* args[] ){
 
 				//Move the dot
 				player2.movePlayer(map);
-				guard1.moveGuard(player1 , player2, map);
-				//guard2.moveGuard(player1 , player2, map);
-				//guard3.moveGuard(player1 , player2, map);
-				//guard4.update(player1 , player2, map);
-				//guard5.update(player1 , player2, map);
+				Prof1.moveProf(player1 , player2, map);
+				//Prof2.moveProf(player1 , player2, map);
+				//Prof3.moveProf(player1 , player2, map);
+				//Prof4.update(player1 , player2, map);
+				//Prof5.update(player1 , player2, map);
+				
 
 			// Handle server/client communication
 
@@ -125,11 +126,11 @@ int main( int argc, char* args[] ){
 			
 				player1.renderPlayer(gRenderer, gPlayer1Texture);
 				player2.renderPlayer(gRenderer, gPlayer2Texture);
-				guard1.renderGuard(gRenderer, gGuardTexture);
-				//guard2.renderGuard(gRenderer, gGuardTexture);
-				//guard3.renderGuard(gRenderer, gGuardTexture);
-				//guard4.renderGuard(gRenderer, gGuardTexture);
-				//guard5.renderGuard(gRenderer, gGuardTexture);
+				Prof1.renderProf(gRenderer, gProfTexture);
+				//Prof2.renderProf(gRenderer, gProfTexture);
+				//Prof3.renderProf(gRenderer, gProfTexture);
+				//Prof4.renderProf(gRenderer, gProfTexture);
+				//Prof5.renderProf(gRenderer, gProfTexture);
 
 			//Update screen
 				SDL_RenderPresent( gRenderer );

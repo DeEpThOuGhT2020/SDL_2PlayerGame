@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Constants.h"
+#include <iostream>
 
 
 Player::Player(int posX, int posY){
@@ -15,6 +16,7 @@ Player::Player(int posX, int posY){
 
     mScore = 0;
     mMentalHealth = 100;
+
 }
 
 void Player::handleEvent( SDL_Event& e ){
@@ -85,4 +87,27 @@ void Player::movePlayer(int map[70][100]){
 void Player::renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture){
     //Show the player
 	playerTexture.render( renderer, mPosX, mPosY );
+}
+
+void Player::transport(){
+        mPosX = 796;
+        mPosY = 496;
+        mVelX = 0;
+        mVelY = 0;
+    
+}
+
+bool Player::isDead(){
+    if (mMentalHealth <= 0){
+        return true;
+    }
+    return false;
+}
+
+bool Player::reachedDestination(int x , int y){
+    if ( mPosX >= x && x <=  (mPosX + PLAYER_WIDTH) &&  mPosY >= y && y <= (mPosY + PLAYER_HEIGHT)){
+        return true;
+    }else{
+        return false;
+    }
 }

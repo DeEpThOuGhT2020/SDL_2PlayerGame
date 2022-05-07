@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = MainClient.cpp Game.cpp WTexture.cpp Player.cpp Guard.cpp
+OBJS = Main.cpp WTexture.cpp Player.cpp Prof.cpp 
 
 #CC specifies which compiler we're using
 CC = g++
@@ -9,10 +9,10 @@ CC = g++
 COMPILER_FLAGS = -w -L lib
 
 #LINKER_FLAGS specifies the libraries we're linking against
-LINKER_FLAGS = -lSDL2 -lSDL2_image 
+LINKER_FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = gamec
+OBJ_NAME = game
 
 #This is the target that compiles our executable
 all : $(OBJS)
