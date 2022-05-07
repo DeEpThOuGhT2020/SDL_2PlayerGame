@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include "WTexture.h"
+#include "Game.h"
 #pragma once
 
 
@@ -34,12 +35,14 @@ class Player{
 		bool reachedDestination(int x , int y);
 
 		bool isDead();
+
+		bool completedTask(int task);
 		
 		//The X and Y offsets of the player
 		int mPosX, mPosY;
 
 		int mScore;
-		Uint32 mMentalHealth;
+		int mMentalHealth;
 
 
     private:

@@ -52,18 +52,26 @@ int main( int argc, char* args[] ){
 
 			//Main loop flag
 			bool quit = false;
+			bool start=true;
+			bool popped = false;
+
+			int task1, task2;
+			int x1, y1, x2, y2;
+
+			bool completed1=false;
+			bool completed2=false;
 
 			//Event handler
 			SDL_Event e;
 
 			//The players and profs that will be moving around on the screen
 			Player player1(72, 300);
-			Player player2(1032, 360);
-			Prof Prof1(72, 380);
-			Prof Prof2(1152, 434);
+			Player player2(1032, 348);
+			Prof Prof1(12, 12);
+			Prof Prof2(1152, 432);
 			Prof Prof3(660, 648);
-			//Prof Prof4(660, 156);
-			//Prof Prof5(348, 72);
+			Prof Prof4(660, 156);
+			Prof Prof5(348, 72);
 
 			//While application is running
 			while( !quit ){
@@ -83,8 +91,8 @@ int main( int argc, char* args[] ){
 				Prof1.moveProf(player1 , player2, map);
 				Prof2.moveProf(player1 , player2, map);
 				Prof3.moveProf(player1 , player2, map);
-				//Prof4.update(player1 , player2, map);
-				//Prof5.update(player1 , player2, map);
+				Prof4.moveProf(player1 , player2, map);
+				Prof5.moveProf(player1 , player2, map);
 
 			// Handle server/client communication
 
@@ -105,16 +113,6 @@ int main( int argc, char* args[] ){
 				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 				SDL_RenderClear( gRenderer );
 
-				Prof1.collided(player1);
-				Prof1.collided(player2);
-				Prof2.collided(player1);
-				Prof2.collided(player2);
-				Prof3.collided(player1);
-				Prof3.collided(player2);
-				//Prof4.collided(player1);
-				//Prof4.collided(player2);
-				//Prof5.collided(player1);
-				//Prof5.collided(player2);
 
 			//Render objects
 				for (int i = 0 ; i < 70 ; i++){
@@ -133,20 +131,63 @@ int main( int argc, char* args[] ){
 						}
 					}
 				}
+
+				if(Prof1.collided(player1) || Prof2.collided(player1) || Prof3.collided(player1) || Prof4.collided(player1) || Prof5.collided(player1))	player1.transport();
+                
+                if(Prof1.collided(player2) || Prof2.collided(player2) || Prof3.collided(player2) || Prof4.collided(player2) || Prof5.collided(player2))	player2.transport();
 			
 				player1.renderPlayer(gRenderer, gPlayer1Texture);
 				player2.renderPlayer(gRenderer, gPlayer2Texture);
 				Prof1.renderProf(gRenderer, gProfTexture);
-				//Prof2.renderProf(gRenderer, gProfTexture);
-				//Prof3.renderProf(gRenderer, gProfTexture);
-				//Prof4.renderProf(gRenderer, gProfTexture);
-				//Prof5.renderProf(gRenderer, gProfTexture);
+				Prof2.renderProf(gRenderer, gProfTexture);
+				Prof3.renderProf(gRenderer, gProfTexture);
+				Prof4.renderProf(gRenderer, gProfTexture);
+				Prof5.renderProf(gRenderer, gProfTexture);
+
+				completed1=player1.completedTask(task1);
+				completed2=player1.completedTask(task2);
 				
-				//WTexture::renderText(gRenderer, gFont, (char *)"Hello", 0, 0, TEXT_WIDTH, TEXT_HEIGHT);
+				if (start){
+					WTexture::renderText(gRenderer, gFont, (char *)"Welcome! Your tasks are being generated!", 200, 0, TEXT_WIDTH, TEXT_HEIGHT);
+					SDL_RenderPresent( gRenderer );
+					SDL_Delay(3000);
+
+					srand(time(0));
+
+					task1 = rand()%7;
+					task2 = rand()%7;
+					WTexture::renderText(gRenderer, gFont, ("Player1: "+tasks[task1]).c_str(), 100, 2*TEXT_HEIGHT, TEXT_WIDTH, TEXT_HEIGHT);
+					WTexture::renderText(gRenderer, gFont, ("Player2: "+tasks[task2]).c_str(), 100, 3*TEXT_HEIGHT, TEXT_WIDTH, TEXT_HEIGHT);
+
+					SDL_RenderPresent( gRenderer );
+					SDL_Delay(10000);
+
+					x1 = std::get<0>(locPoints[task1]);
+					y1 = std::get<1>(locPoints[task1]);
+					x2 = std::get<0>(locPoints[task2]);
+					y2 = std::get<1>(locPoints[task2]);
+					start=false;
+				}
+
+				if (completed1){
+					WTexture::renderText(gRenderer, gFont, (char *)"Player1 has won the game!", 200, 0, TEXT_WIDTH, TEXT_HEIGHT);
+					SDL_RenderPresent( gRenderer );
+					SDL_Delay(10000);
+					quit = true;
+				}
+
+				if (completed2){
+					WTexture::renderText(gRenderer, gFont, (char *)"Player2 has won the game!", 200, 0, TEXT_WIDTH, TEXT_HEIGHT);
+					SDL_RenderPresent( gRenderer );
+					SDL_Delay(10000);
+					quit = true;
+				}
+
+				gTask1.render(gRenderer, x1, y1, TILE_SIZE, TILE_SIZE);
+				gTask2.render(gRenderer, x2, y2, TILE_SIZE, TILE_SIZE);
 
 			//Update screen
 				SDL_RenderPresent( gRenderer );
-
 			}
 		}
 	}

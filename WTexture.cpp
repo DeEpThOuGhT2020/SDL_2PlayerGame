@@ -67,10 +67,10 @@ void WTexture::render( SDL_Renderer* renderer, int x, int y, int l, int b ){
 	SDL_RenderCopy( renderer, mTexture, nullptr, &renderQuad );
 }
 
-void WTexture::renderText(SDL_Renderer* renderer, TTF_Font* font, char *text, int x, int y, int l, int b){
+void WTexture::renderText(SDL_Renderer* renderer, TTF_Font* font, const char *text, int x, int y, int l, int b){
 
 	// Color of the text in rgb format,
-	SDL_Color White = {255, 255, 255, 0};
+	SDL_Color White = {0, 0, 0, 0};
 
 	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(font, text, White); 
 

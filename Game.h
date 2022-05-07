@@ -2,7 +2,11 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include <stdio.h>
-#include <string>
+#include <cstring>
+#include <stdlib.h>
+#include <fstream>
+#include <vector>
+#include <utility>
 #include "WTexture.h"
 #include "Constants.h"
 #pragma once
@@ -24,6 +28,8 @@ extern WTexture gRoadTexture;
 extern WTexture gProfTexture;
 extern WTexture gBuildingTexture;
 extern WTexture gGrassTexture;
+extern WTexture gTask1;
+extern WTexture gTask2;
 
 //Starts up SDL and creates window
 bool init();
@@ -36,3 +42,7 @@ void close();
 
 //Map
 extern int map[70][100];
+
+//Locations for tasks
+extern std::pair<int, int> locPoints[7];
+extern std::string tasks[7];

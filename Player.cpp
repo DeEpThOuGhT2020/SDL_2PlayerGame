@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "Constants.h"
-
+#include <utility>
 
 Player::Player(int posX, int posY){
     //Initialize the offsets
@@ -14,7 +14,7 @@ Player::Player(int posX, int posY){
     //Initialize the score and mental health
 
     mScore = 0;
-    mMentalHealth = 1800000;
+    mMentalHealth = 100;
 }
 
 void Player::handleEvent( SDL_Event& e ){
@@ -88,8 +88,8 @@ void Player::renderPlayer(SDL_Renderer* renderer, WTexture &playerTexture){
 }
 
 void Player::transport(){
-        mPosX = 796;
-        mPosY = 496;
+        mPosX = LHC_X;
+        mPosY = LHC_Y;
         mVelX = 0;
         mVelY = 0;
     
@@ -108,4 +108,10 @@ bool Player::reachedDestination(int x , int y){
     }
     else
         return false;
+}
+
+bool Player::completedTask(int task){
+    int x=std::get<0>(locPoints[task]);
+    int y=std::get<1>(locPoints[task]);
+    return sqrt(pow(x-mPosX,2)+pow(y-mPosY,2))<12.0;
 }

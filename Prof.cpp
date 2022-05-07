@@ -14,7 +14,13 @@ float dist(int x1, int y1, int x2, int y2){
     return sqrt(pow(x1-x2,2)+pow(y1-y2,2));
 }
 
-void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){    
+void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
+    if (dist(mPosX, mPosY, LHC_X, LHC_Y) < 150) {
+        mPosX = iPosX;
+        mPosY = iPosY;
+        mVelX = 0;
+        mVelY = 0;
+    }    
     if (dist(mPosX,mPosY,p1.mPosX,p1.mPosY) < dist(mPosX,mPosY,p2.mPosX,p2.mPosY)){
         if(mPosX < p1.mPosX){
             mVelX = PROF_VEL;
@@ -42,11 +48,6 @@ void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
         else if(mPosY > p2.mPosY){
             mVelY = -1*PROF_VEL;
         }
-    }
-    
-    if(dist(mPosX , mPosY , 796 , 496) < 100){
-        mVelY = -1*mVelY;
-        mVelX = -1*mVelX;
     }
     
     //Move the Prof left or right
@@ -79,10 +80,5 @@ void Prof::renderProf(SDL_Renderer* renderer, WTexture &ProfTexture){
 }
 
 bool Prof::collided(Player p){
-    if(mPosX == p.mPosX && mPosY == p.mPosY){
-        p.transport();
-        return true;
-    }
-    else
-        return false;
+    return dist(mPosX, mPosY, p.mPosX, p.mPosY) < 12.0;
 }

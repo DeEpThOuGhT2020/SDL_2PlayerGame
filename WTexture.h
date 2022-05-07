@@ -37,7 +37,7 @@ class WTexture{
 		
 		//Renders texture at given point
 		void render( SDL_Renderer* renderer, int x, int y, int l, int b);
-		static void renderText( SDL_Renderer* renderer, TTF_Font* font, char *text, int x, int y, int l, int b );
+		static void renderText( SDL_Renderer* renderer, TTF_Font* font, const char *text, int x, int y, int l, int b );
 
 		//Gets image dimensions
 		int getWidth();
