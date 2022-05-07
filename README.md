@@ -22,6 +22,8 @@ For client:
     type ./gamec and press return
 
 and Enjoy!
+______________________________________________________________
+
 Acknowledgements - We referenced the following websites for the game:
 https://lazyfoo.net/tutorials/SDL/index.php
 https://github.com/schuay/pacman
