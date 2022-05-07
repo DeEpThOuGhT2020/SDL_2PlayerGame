@@ -20,7 +20,7 @@ WTexture gTask1;
 WTexture gTask2;
 
 //Locations
-std::pair<int, int> locPoints[7] = {{720, 440}, {408,516}, {252,420}, {84,660}, {540,552}, {396,648}, {348,312}};
+std::pair<int, int> locPoints[7] = {{708, 428}, {408,516}, {252,420}, {84,660}, {540,552}, {396,648}, {348,312}};
 std::string tasks[7] = {"Collect CMP Notes from Scoops", "Buy ORS from Apollo", "Get your cycle repaired", "Get milk from mother dairy", "Play in the Sports Ground", "Visit the Research Park", "Eat at Satpura Night Mess"};
 
 //Map
