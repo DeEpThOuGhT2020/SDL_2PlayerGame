@@ -5,7 +5,7 @@
 #include "Prof.h"
 #include <map>
 
-map < pair<int,int> , string> locations ;
+map<pair<int,int> , string> locations ;
 locations.insert(pair<pair<int,int>>, string>(<720,420>, "Collect CMP Notes from Scoops"));
 locations.insert(pair<pair<int,int>>, string>(<408,516>, "Buy ORS from Apollo"));
 locations.insert(pair<pair<int,int>>, string>(<252,420>, "Get your cycle repaired"));

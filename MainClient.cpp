@@ -58,7 +58,7 @@ int main( int argc, char* args[] ){
 
 			//The players and profs that will be moving around on the screen
 			Player player1(72, 300);
-			Player player2(1032, 350);
+			Player player2(1032, 360);
 			Prof Prof1(72, 380);
 			Prof Prof2(1152, 434);
 			Prof Prof3(660, 648);

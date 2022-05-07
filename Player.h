@@ -39,7 +39,7 @@ class Player{
 		int mPosX, mPosY;
 
 		int mScore;
-		int mMentalHealth;
+		Uint32 mMentalHealth;
 
 
     private:

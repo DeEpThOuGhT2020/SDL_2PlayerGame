@@ -44,6 +44,11 @@ void Prof::moveProf(Player p1 ,Player p2, int map[70][100]){
         }
     }
     
+    if(dist(mPosX , mPosY , 796 , 496) < 100){
+        mVelY = -1*mVelY;
+        mVelX = -1*mVelX;
+    }
+    
     //Move the Prof left or right
      mPosX += mVelX;
     //If the Prof went too far to the left or right
