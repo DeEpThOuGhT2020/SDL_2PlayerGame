@@ -14,7 +14,7 @@ Player::Player(int posX, int posY){
     //Initialize the score and mental health
 
     mScore = 0;
-    mMentalHealth = 1800;
+    mMentalHealth = 1800000;
 }
 
 void Player::handleEvent( SDL_Event& e ){

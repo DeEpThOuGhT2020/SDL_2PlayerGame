@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Constants.h"
 #include "Prof.h"
+#include <iostream>
 //#include "Locations.cpp"
 
 //Starts up SDL and creates window
@@ -35,6 +36,7 @@ WTexture gBuildingTexture;
 WTexture gGrassTexture;
 WTexture gFoodTexture;
 WTexture gWinTexture;
+WTexture gLoseTexture;
 Mix_Music *gMusic = NULL;
 
 
@@ -141,6 +143,9 @@ bool loadMedia(){
 		printf("Failed to load Prof texture image!\n");
 		success = false;
 	}if(!gWinTexture.loadFromFile(gRenderer, "Resources/win.png")){
+		printf("Failed to load Prof texture image!\n");
+		success = false;
+	}if(!gLoseTexture.loadFromFile(gRenderer, "Resources/lose.png")){
 		printf("Failed to load Prof texture image!\n");
 		success = false;
 	}
@@ -359,13 +364,22 @@ int main( int argc, char* args[] ){
 				Prof4.renderProf(gRenderer, gProfTexture);
 				Prof5.renderProf(gRenderer, gProfTexture);
 
-                if(player1.mPosX == 0){
+                if(player1.mMentalHealth > 1800000){
+                    SDL_RenderClear( gRenderer );
+                    gLoseTexture.render(gRenderer, 0,0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                    
 
+                }
+                if(player1.mScore + player2.mScore == 70){
+                    SDL_RenderClear( gRenderer );
+                    gWinTexture.render(gRenderer, 0,0, SCREEN_WIDTH, SCREEN_HEIGHT);
+                   
                 }
 
 				//Update screen
 				SDL_RenderPresent( gRenderer );
-
+                //std::cout<<SDL_GetTicks()<<std::endl;
+                std::cout<<player1.mMentalHealth<<std::endl;
 				
 			}
 		}
