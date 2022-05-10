@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/sunidhisingh/Desktop/Coursework/COP290/myproject'
+g++ Main.cpp WTexture.cpp Player.cpp Prof.cpp -w -L lib -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -o game
+make: Leaving directory `/Users/sunidhisingh/Desktop/Coursework/COP290/myproject'
+ 
